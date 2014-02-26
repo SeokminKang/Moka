@@ -92,6 +92,43 @@ $ git checkout gh-pages
       </footer>
 
     </div>
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <ul id="repos"></ul>
+        <script>
+            (function ($) {
+                $(document).ready(function () {
+
+                    $.ajax({
+
+                        url: "https://api.github.com/users/seokminkang/repos",
+
+                        // the name of the callback parameter, as specified by the YQL service
+
+                        jsonp: "callback",
+
+                        // tell jQuery we're expecting JSONP
+
+                        dataType: "jsonp",
+
+                        // work with the response
+
+                        success: function (response) {
+
+                            //console.log(response); // server response
+                            //alert(response.data.length);
+                            $.each(response.data, function (i, repo) {
+                                var li = $("<li></li>").text(repo.html_url);
+                                $("#repos").append(li);
+                            });
+
+                        }
+
+                    });
+
+
+                });
+            })(jQuery);
+        </script>
 
     
   </body>
