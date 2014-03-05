@@ -114,7 +114,7 @@ $ git checkout gh-pages
 
                         success: function (response) {
 
-                            //console.log(response); // server response
+                            console.log(response); // server response
                             //alert(response.data.length);
                             $.each(response.data, function (i, repo) {
                                 var li = $("<li></li>").text(repo.html_url);
